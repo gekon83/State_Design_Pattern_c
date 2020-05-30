@@ -18,15 +18,19 @@ void ClientCode() {
 	Context *context = Context_ctor();
 
 	Context_input(context, 0);
-	Context_useStateFunA(context);
-	Context_useStateFunB(context);
-
-	Context_input(context, 1);
-	Context_useStateFunB(context);
-	Context_useStateFunA(context);
+	//Context_useStateFunA(context);
+	//Context_useStateFunB(context);
 
 	Context_input(context, 0);
-	Context_useStateFunB(context);/**/
+	Context_input(context, 1);
+	//Context_useStateFunB(context);
+	//Context_useStateFunA(context);
+
+	Context_input(context, 0);
+	Context_input(context, 1);
+	Context_input(context, 1);
+	Context_input(context, 0);
+	//Context_useStateFunB(context);/**/
 	free(context);
 }
 

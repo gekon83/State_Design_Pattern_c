@@ -38,7 +38,7 @@ void Context_input(Context *this, int flag) {
 			break;
 	}/**/
 
-	printf("\n   flag: %d", flag);
+	//printf("\n   flag: %d", flag);
 	State_execute(this->myState, flag);
 }
 

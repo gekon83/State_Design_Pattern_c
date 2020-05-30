@@ -17,6 +17,14 @@ static inline void State_B_funB_(State * this) {
 
 static inline void State_B_execute_(State * this, int flag) {
 	printf("\nState_B_execute_ called from %s with a flag %d", this->name, flag);
+	switch(flag) {
+	case 0:
+		printf("\n\t\tdoing something inside State_B...");
+		break;
+	case 1:
+		printf("\n\t\ttransorm to State_A...");
+		break;
+	}
 }
 
 State_B * State_B_ctor() {
