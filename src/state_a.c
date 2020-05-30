@@ -20,8 +20,10 @@ static inline State * State_A_execute_(State * this, int flag) {
 	printf("\n\tState_A_execute_ called from %s with a flag %d", this->name, flag);
 	switch(flag) {
 	case 0:
-		printf("\n\t\ttransorm to State_B...");
+		printf("\n\t\t...i am about to free ");
+		State_print(this);
 		free(this);
+		printf("\n\t\tand transorm to State_B...");
 		this = (State *) State_B_ctor();
 		break;
 	case 1:

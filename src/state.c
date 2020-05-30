@@ -10,7 +10,7 @@
 
 
 void State_print(State * this) {
-	printf("\n\thello this is %s", this->name);
+	printf("%s", this->name);
 }
 
 /*

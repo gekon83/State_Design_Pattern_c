@@ -20,8 +20,10 @@ void Context_dtor(Context *this) {
 
 void Context_input(Context *this, int flag) {
 	printf("\n\n------> Context_input");
+	printf("\n\tstate before: ");
 	State_print(this->myState);
 	this->myState = State_execute(this->myState, flag);
+	printf("\n\tstate after: ");
 	State_print(this->myState);
 }
 
