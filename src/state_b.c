@@ -5,6 +5,7 @@
  *      Author: grzko
  */
 
+#include "state_a.h"
 #include "state_b.h"
 
 static inline void State_B_funA_(State * this) {
@@ -15,20 +16,23 @@ static inline void State_B_funB_(State * this) {
 	printf("\nB is much funnier...State_B_funB_ called from %s", this->name);
 }
 
-static inline void State_B_execute_(State * this, int flag) {
-	printf("\nState_B_execute_ called from %s with a flag %d", this->name, flag);
+static inline State * State_B_execute_(State * this, int flag) {
+	printf("\n\tState_B_execute_ called from %s with a flag %d", this->name, flag);
 	switch(flag) {
 	case 0:
 		printf("\n\t\tdoing something inside State_B...");
 		break;
 	case 1:
 		printf("\n\t\ttransorm to State_A...");
+		free(this);
+		this = (State *) State_A_ctor();
 		break;
 	}
+	return this;
 }
 
 State_B * State_B_ctor() {
-	printf("\tState_B_ctor");
+	printf("\t(State_B_ctor)");
 	State_B *ptr = malloc(sizeof(ptr));
 	sprintf(ptr->super.name, "State_B");
 	static struct StateVtbl const vbtl = {

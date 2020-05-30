@@ -12,6 +12,11 @@
 #include <stdio.h>
 //#include "context.h"
 
+enum types {
+	CHANGE,
+	WORK
+};
+
 struct StateVtbl;
 
 typedef struct {
@@ -22,9 +27,10 @@ typedef struct {
 struct StateVtbl {
 	void (*funA)(State * this);
 	void (*funB)(State * this);
-	void (*execute)(State * this, int flag);
-	//void (*execute)(State * this, Context *context, int flag);
+	State * (*execute)(State * this, int flag);
 };
+
+void State_print(State * this);
 
 static inline void State_funA(State * this) {
 	(*this->vptr->funA)(this);
@@ -34,7 +40,7 @@ static inline void State_funB(State * this) {
 	(*this->vptr->funB)(this);
 }
 
-static inline void State_execute(State * this, int flag) {
+static inline State * State_execute(State * this, int flag) {
 	(*this->vptr->execute)(this, flag);
 }
 

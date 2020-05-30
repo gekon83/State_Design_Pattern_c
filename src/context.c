@@ -10,7 +10,7 @@
 Context * Context_ctor() {
 	printf("Context_ctor\n");
 	Context *ptr = malloc(sizeof(ptr));
-	ptr->myState = NULL;
+	ptr->myState = (State *) State_A_ctor();
 	return ptr;
 }
 
@@ -19,27 +19,10 @@ void Context_dtor(Context *this) {
 }
 
 void Context_input(Context *this, int flag) {
-	printf("\n\n------>Context_input\n");
-
-	//State
-	//this->myState = State_execute(this->myState, flag);
-
-	if(this->myState != NULL) {
-		printf("state set -> freeing memory...\n");
-		free(this->myState);
-	}
-
-	switch(flag) {
-	case (0):
-			this->myState = State_A_ctor();
-			break;
-	case (1):
-			this->myState = State_B_ctor();
-			break;
-	}/**/
-
-	//printf("\n   flag: %d", flag);
-	State_execute(this->myState, flag);
+	printf("\n\n------> Context_input");
+	State_print(this->myState);
+	this->myState = State_execute(this->myState, flag);
+	State_print(this->myState);
 }
 
 void Context_useStateFunA(Context *this) {

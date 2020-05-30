@@ -23,6 +23,7 @@ void ClientCode() {
 
 	Context_input(context, 0);
 	Context_input(context, 1);
+	Context_input(context, 1);
 	//Context_useStateFunB(context);
 	//Context_useStateFunA(context);
 
@@ -32,6 +33,7 @@ void ClientCode() {
 	Context_input(context, 0);
 	//Context_useStateFunB(context);/**/
 	free(context);
+	printf("\n_________________________________________the end");
 }
 
 int main(void) {

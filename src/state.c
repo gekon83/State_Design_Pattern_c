@@ -9,18 +9,20 @@
 #include "state.h"
 
 
+void State_print(State * this) {
+	printf("\n\thello this is %s", this->name);
+}
+
+/*
+// purely-virtual functions should never be called
 static void State_funA_(State * me) {
-    assert(0); /* purely-virtual function should never be called */
+    assert(0);
 }
 
 static void State_funB_(State * me) {
-    assert(0); /* purely-virtual function should never be called */
+    assert(0);
 }
 
-static inline void State_execute_(State * this, int flag) {
-	(*this->vptr->execute)(this, flag);
-}/**/
-/*
-static inline void State_execute_(State * this, Context *context, int flag) {
-	(*this->vptr->execute)(this, context);
+static inline State * State_execute_(State * this, int flag) {
+    assert(0);
 }/**/
