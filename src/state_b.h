@@ -8,7 +8,9 @@
 #ifndef STATE_B_H_
 #define STATE_B_H_
 
+#include <stdlib.h>
 #include "state.h"
+#include "state_a.h"
 
 typedef struct {
 	State super;

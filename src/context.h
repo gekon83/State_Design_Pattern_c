@@ -19,7 +19,7 @@ typedef struct {
 
 Context * Context_ctor();
 void Context_dtor(Context *this);
-void Context_changeState(Context *this, int flag);
+void Context_input(Context *this, int flag);
 void Context_useStateFunA(Context *this);
 void Context_useStateFunB(Context *this);
 

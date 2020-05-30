@@ -18,8 +18,11 @@ void Context_dtor(Context *this) {
 	free(this);
 }
 
-void Context_changeState(Context *this, int flag) {
-	printf("\n\n------>Context_changeState\n");
+void Context_input(Context *this, int flag) {
+	printf("\n\n------>Context_input\n");
+
+	//State
+	//this->myState = State_execute(this->myState, flag);
 
 	if(this->myState != NULL) {
 		printf("state set -> freeing memory...\n");
@@ -33,7 +36,10 @@ void Context_changeState(Context *this, int flag) {
 	case (1):
 			this->myState = State_B_ctor();
 			break;
-	}
+	}/**/
+
+	printf("\n   flag: %d", flag);
+	State_execute(this->myState, flag);
 }
 
 void Context_useStateFunA(Context *this) {

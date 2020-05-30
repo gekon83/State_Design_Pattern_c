@@ -8,13 +8,15 @@
 #include "state_b.h"
 
 static inline void State_B_funA_(State * this) {
-	printf("\nB is awsome...State_B_funA_");
-	printf(this->name);
+	printf("\nB is awsome...State_B_funA_ called from %s", this->name);
 }
 
 static inline void State_B_funB_(State * this) {
-	printf("\nB is much funnier...State_B_funB_");
-	printf(this->name);
+	printf("\nB is much funnier...State_B_funB_ called from %s", this->name);
+}
+
+static inline void State_B_execute_(State * this, int flag) {
+	printf("\nState_B_execute_ called from %s with a flag %d", this->name, flag);
 }
 
 State_B * State_B_ctor() {
@@ -23,7 +25,8 @@ State_B * State_B_ctor() {
 	sprintf(ptr->super.name, "State_B");
 	static struct StateVtbl const vbtl = {
 				&State_B_funA_,
-				&State_B_funB_
+				&State_B_funB_,
+				&State_B_execute_
 		};
 	ptr->super.vptr = &vbtl;
 	return ptr;
